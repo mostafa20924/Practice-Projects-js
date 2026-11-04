@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const tasksRouter = require('./routes/tasksroutes');
 const connectDB = require('./database/conect');
-const PORT = 3000;
+require('dotenv').config(); // Load environment variables from .env file
+const PORT = process.env.PORT || 3000;
 
 
 // Middleware to parse JSON requests 
@@ -17,7 +18,7 @@ app.use('/api/v1/tasks', tasksRouter);
 
 const startServer = async () => {
   try {
-           await connectDB(); 
+           await connectDB(process.env.MONGO_URI); // Use the MONGO_URI from .env file
             console.log('Connected to the database');
 
         app.on("error", (error) => {    // to check if there are any errors 

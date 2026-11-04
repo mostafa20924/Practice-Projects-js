@@ -1,10 +1,11 @@
 const mongoose=require("mongoose");
+require('dotenv').config(); // Load environment variables from .env file
 
-const conectionString="mongodb+srv://printwork664_db_user:Password@cluster0.fqkf6u3.mongodb.net/TaskManager?retryWrites=true&w=majority";
-const connectDB = async () => {
+
+const connectDB = async (uri) => {
     try {
         const connectionInstance = await mongoose.connect
-        (conectionString, {
+        (uri, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true,
@@ -21,5 +22,5 @@ const connectDB = async () => {
         
     }
 }
-
+ 
 module.exports=connectDB;
