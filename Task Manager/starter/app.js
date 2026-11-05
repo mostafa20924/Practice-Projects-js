@@ -8,10 +8,8 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware to parse JSON requests 
 app.use(express.json());
+app.use(express.static('./public')); // Serve static files from the 'public' directory
 
-app.get('/', (req, res) => {
-    res.send('Welcome to the Task Manager API!');
-});
 
 app.use('/api/v1/tasks', tasksRouter); 
 
