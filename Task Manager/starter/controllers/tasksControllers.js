@@ -2,9 +2,9 @@ const Task = require('../models/TaskSchema');
 const getAllTasks = async (req, res) => {
     try {
         const tasks = await Task.find({});
-        res.status(200).json(tasks);
+        res.status(200).json({ tasks });   // { tasks: [...] }
     } catch (error) {
-        res.status(400).json({ message: 'Error retrieving tasks', error });
+        res.status(500).json({ message: 'Error retrieving tasks', error });
     }
 };
 
